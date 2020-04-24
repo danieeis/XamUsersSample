@@ -9,6 +9,9 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <AbsoluteLayout>
+            <ActivityIndicator IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" Color="AntiqueWhite" 
+            AbsoluteLayout.LayoutFlags="PositionProportional"  
+            AbsoluteLayout.LayoutBounds=".50,.50,50,50"></ActivityIndicator>
             <CollectionView
             ItemsSource="{Binding Users}">
                 <CollectionView.ItemTemplate>
