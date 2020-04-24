@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="UsersSample.Views.UserListView"
+    xmlns:vm="clr-namespace:UsersSample.ViewModels">
+    <ContentPage.BindingContext>
+        <vm:UserListViewModel></vm:UserListViewModel>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <CollectionView
+            ItemsSource="{Binding Users}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.RowSpan="2"
+                                    Source="{Binding ImageUrl}"
+                                    Aspect="AspectFit"
+                                    HeightRequest="60"
+                                    WidthRequest="60" />
+                            <Label Grid.Column="1"
+                                    Text="{Binding FullName}"
+                                    FontAttributes="Bold" />
+                            <Label Grid.Row="1"
+                                    Grid.Column="1"
+                                    Text="{Binding Phone}"
+                                    FontAttributes="Italic"
+                                    VerticalOptions="End" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <ImageButton Source="add_floating_button.png" 
+            BackgroundColor="Transparent"
+            AbsoluteLayout.LayoutFlags="PositionProportional"  
+            AbsoluteLayout.LayoutBounds=".95,.95,80,80"
+            Command="{Binding AddItemCommand}"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
